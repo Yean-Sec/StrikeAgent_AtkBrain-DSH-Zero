@@ -1,0 +1,5 @@
+Host,Port,URL,Note
+"www.example.com",443,"https://www.example.com/login","primary, edge"
+"api.example.com",8443,"https://api.example.com:8443/v1?x=1","line1
+line2"
+"010.001.001.001",80,"","quarantined row"

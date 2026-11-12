@@ -1,0 +1,12 @@
+{"kind":"service","host":"www.example.com","port":443,"protocol":"https","service":"nginx","banner":"nginx/1.24.0","tls":true,"password":"hunter2"}
+{"kind":"http","url":"https://admin:secret@www.example.com:443/login?next=%2Fhome#frag","status":200,"title":"Edge admin","server":"nginx","headers":{"set-cookie":"sid=abc","content-type":"text/html","authorization":"Bearer xyz"},"techs":["nginx","react"]}
+{"kind":"finding","title":"Exposed admin panel","severity":"High","status":"verified","url":"https://www.example.com/login","cve":"CVE-2024-12345","cwe":"CWE-284","cvss":9.8,"evidence":"GET /login -> 200"}
+{"kind":"dns","host":"api.example.com","addresses":["192.0.2.10","2001:0db8:0000:0000:0000:0000:0000:0001"],"cname":"edge.example.com","ttl":300}
+{"kind":"host","host":"web01","ips":["192.0.2.11"],"os":"linux","state":"up","tags":["edge","prod"]}
+{"kind":"service","host":"www.example.com"}
+{"kind":"unknown","host":"unknown.example.com"}
+{"kind":"finding","title":"Low confidence oddity","severity":"weird","status":"bogus","host":"www.example.com"}
+not json at all
+[1,2,3]
+{"kind":"http","url":"ftp://example.com/file"}
+{"type":"dns","host":"legacy.example.com","addresses":["192.0.2.12"]}

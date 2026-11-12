@@ -1,0 +1,114 @@
+# AtkBrain bundle patch. The row id is stable: profile overrides target it.
+# Every value below is a default; edit this file to tune the workbench.
+- insert:
+    - id: atk-brain
+      name: '@local/atk-brain'
+      config:
+        # Authorized-engagement guard: no network action runs before a scope is set.
+        requireScope: true
+        requireScopeApproval: true
+        requireTunnelApproval: true
+        enabled: true
+        offline: false
+
+        # State caps. The session log is the source of truth; keep it bounded.
+        maxNodes: 20000
+        maxEdges: 60000
+        viewNodeLimit: 2500
+        viewEdgeLimit: 6000
+        auditLimit: 500
+
+        # Asset ingestion / wildcard DNS.
+        wildcardProbes: 3
+        wildcardRounds: 2
+        dnsConcurrency: 6
+        dnsTimeoutMs: 3000
+        dnsResolvers: []
+
+        # Probe limits.
+        probeConcurrency: 8
+        probeTimeoutMs: 4000
+        maxPortsPerCall: 32
+        maxHttpBodyBytes: 1048576
+        followRedirects: 3
+
+        # Host-plane tunnels (SSH dynamic/local or an existing SOCKS5 proxy).
+        allowTunnels: true
+        tunnelStartupTimeoutMs: 8000
+
+        # Evidence and reports live under the session workspace.
+        reportDir: .atkbrain/reports
+        evidenceDir: .atkbrain/evidence
+        teamDir: .atkbrain/team
+        teamBatchSize: 8
+        teamMaxBatches: 4
+
+        # Autonomous loop / self-supervision / evolution.
+        loopMaxRounds: 40
+        loopMaxWallMinutes: 360
+        loopNoProgressRounds: 2
+        loopStallRounds: 3
+        loopSpiralPromoteRounds: 3
+        loopMaxActionsPerRound: 3
+        supervisorMode: auto
+        supervisorInterval: 3
+        supervisorTimeoutMs: 90000
+        verifierTimeoutMs: 120000
+        evolveAi: true
+        evolveTimeoutMs: 90000
+        lessonTopK: 6
+        # Empty = ~/.dsh/atkbrain/memory/lessons.jsonl (cross-engagement).
+        lessonStore: ''
+
+        # Auxiliary teams: supervision / evolution / verification+rating / report.
+        selfTeamMode: subagents
+        selfTeamTimeoutMs: 90000
+        reportTheme: auto
+        reportAi: false
+        autoVerifyFindings: false
+        autoVerifyMaxFindings: 2
+        reportAiTimeoutMs: 120000
+        skillTopK: 6
+        # Empty = ~/.dsh/atkbrain/skills (cross-engagement path skills).
+        skillDir: ''
+
+        # External skill libraries, dictionaries and scanner binaries are not bundled.
+        arsenalRoot: ''
+        arsenalToolTimeoutMs: 120000
+        arsenalMaxOutputBytes: 262144
+        arsenalMaxSkillBytes: 32768
+
+        # Coverage / hypothesis / proof gates.
+        coverageMaxCells: 500
+        coverageAutoSeed: false
+        requireProofForVerified: true
+        requireTwoChannelsForHigh: true
+        huntDispatchOnly: false
+
+        # Process-wide DSH egress proxy. Loopback and NO_PROXY stay direct.
+        proxyEnabled: false
+        proxyMode: local              # direct | custom | local | provider
+        proxyUrl: ''
+        proxyUrlEnv: ATKBRAIN_PROXY_URL
+        proxyLocalUrl: http://127.0.0.1:7897
+        proxyPool: []
+        proxyProviderUrl: ''
+        proxyNoProxy: ''
+        proxyFailClosed: true
+        proxyEchoUrl: http://ip.sb
+        proxyCheckIntervalMs: 15000
+        proxyTimeoutMs: 8000
+        proxyApplyToProbe: true
+        proxyBypassPrivate: false
+
+        # Optional explicit interpreter for docx/xlsx/pptx extraction.
+        # null = auto-detect the DSH runtime Python and then python3 from PATH.
+        pythonPath: null
+
+        # Redaction thresholds for verifiable bulk data.
+        bulkThresholds:
+          pii: 500
+          financial: 500
+          regulated: 500
+          credentials: 50
+          keys: 1

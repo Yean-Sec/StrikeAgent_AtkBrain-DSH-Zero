@@ -1,0 +1,21 @@
+# AtkBrain synthetic asset fixture (authorized test data only)
+// two-slash comments are ignored as well
+
+example.com
+WWW.Example.COM.
+*.example.com
+192.0.2.10
+2001:0db8:0000:0000:0000:0000:0000:0001
+192.0.2.0/24
+https://demo:example-pass@example.com:443/login?next=%2Fhome#frag
+http://example.com:8080/health
+api.example.com:8443
+web01
+010.001.001.001
+buecher.example.com
+example。com
+sso.example.co.uk
+
+# duplicates on purpose
+example.com
+www.example.com

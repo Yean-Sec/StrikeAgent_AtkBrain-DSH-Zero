@@ -1,0 +1,3 @@
+host	port	url
+www.example.com	443	https://www.example.com/
+api.example.com	8443	https://api.example.com:8443/v1

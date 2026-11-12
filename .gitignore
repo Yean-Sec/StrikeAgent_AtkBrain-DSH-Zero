@@ -1,0 +1,33 @@
+# dependencies
+node_modules/
+
+# editor and agent metadata
+.cursor/
+.vscode/
+.idea/
+
+# runtime state, evidence, reports, and local databases
+.atkbrain/
+*.db
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+*.db-journal
+
+# secrets and credentials
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+credentials.json
+secrets.json
+settings.json
+
+# local backups and OS files
+*.bak
+*.bak-*
+.DS_Store

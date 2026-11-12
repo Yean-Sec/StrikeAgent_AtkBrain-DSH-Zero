@@ -1,0 +1,6 @@
+"www.example.com"
+{"domain": "example.com", "port": 443}
+{"url": "https://api.example.com:8443/v1?x=1", "note": "quoted \"ok\""}
+{"host": "web01", "ips": ["192.0.2.11", "2001:db8::11"]}
+not-json-at-all
+"010.2.3.4"
